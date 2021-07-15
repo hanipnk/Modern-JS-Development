@@ -1,5 +1,3 @@
-/*
-
 // Importing module
 
 // import { addToCart, tq, totalPrice as price } from './shoppingCart.js';
@@ -16,13 +14,13 @@
 // Do not mix Default and Named Exports like below( script 15)
 // import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 // console.log(price);
+import { cart } from './shoppingCart.js';
+import add from './shoppingCart.js';
+add('Pizza', 2);
+add('Bread', 5);
+add('Apple', 4);
 
-// import add from './shoppingCart.js';
-// add('Pizza', 2);
-// add('Bread', 5);
-// add('Apple', 4);
-
-// // console.log(cart);
+console.log(cart);
 
 // import { greenApple } from './shoppingCart.js';
 // console.log(greenApple);
@@ -35,11 +33,9 @@
 
 // m('apple', 100);
 
-import emptyCart from './shoppingCart.js';
+//import emptyCart from './shoppingCart.js';
 
-emptyCart('apple', 5);
-
-*/
+//emptyCart('apple', 5);
 
 /*
 // Module Pattern
@@ -93,11 +89,42 @@ const {addTocart} = require('./shoppingCart.js')
 
 */
 
+/*
 // A Brief Introduction to the Command Line
 
-//CMD
-// ni - to create file
+//CMD from window search
+//dir - showing contents of the current folder
+//cd .. - for going to up from the current folder
+// cd .\13-Advanced-DOM-Bankist\ - going in to the folder (TAB)
+// cd ../.. - going to 2 level up
+// clear - clear the console
+// ni - to create files
 // del - to delete file
 //rmdir 'name' - to delete folder
+
 // . /'name' - current folder
-// ../ to parent folder
+
+*/
+
+// import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
+
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'Pizza', quantity: 5 },
+  ],
+  user: { loggedIn: true },
+};
+
+const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.log(stateClone);
+
+console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
