@@ -128,3 +128,28 @@ console.log(stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+class Person {
+  greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+
+const jonas = new Person('Jonas');
+
+console.log('Jonas' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(x => console.log(x));
+
+// Polifilling the new features which can not replace back to ES5 unlike con ->var, arrow function -> regular function
+import 'core-js/stable'; // should print in terminal too (npm i core-js)
+
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/promise';
+// if i'm really worried the bundle size, I can only polifill certain features like above (149,150)
+
+// Polifilling async functions
+import 'regenerator-runtime/runtime'; // // should print in terminal too(npm i regenerator-runtime)
